@@ -1,9 +1,15 @@
-﻿namespace CarsAnnouncements.Data.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+using static CarsAnnouncements.Data.DataConstants;
+
+namespace CarsAnnouncements.Data.Models
 {
     public class Car
     {
         public int Id { get; init; }
 
+        [Required]
+        [MaxLength(NameMaxLength)]
         public string Model { get; set; }
 
         public int BrandId { get; set; }
