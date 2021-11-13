@@ -13,9 +13,7 @@ namespace CarsAnnouncements.Data.Models
         [MaxLength(NameMaxLength)]
         public string Name { get; set; }
 
-        public int ModelId { get; set; }
-
-        public Model Model { get; set; }
+        public ICollection<Model> Models { get; init; } = new HashSet<Model>();
 
         public ICollection<Car> Cars { get; init; } = new HashSet<Car>();
     }

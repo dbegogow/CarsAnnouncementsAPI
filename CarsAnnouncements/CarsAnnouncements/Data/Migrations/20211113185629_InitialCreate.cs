@@ -12,8 +12,7 @@ namespace CarsAnnouncements.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    ModelId = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,6 +46,19 @@ namespace CarsAnnouncements.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Type",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Type", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Models",
                 columns: table => new
                 {
@@ -74,6 +86,7 @@ namespace CarsAnnouncements.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BrandId = table.Column<int>(type: "int", nullable: false),
                     ModelId = table.Column<int>(type: "int", nullable: false),
+                    TypeId = table.Column<int>(type: "int", nullable: false),
                     FuelId = table.Column<int>(type: "int", nullable: false),
                     TransmissionId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
@@ -108,6 +121,12 @@ namespace CarsAnnouncements.Data.Migrations
                         principalTable: "Transmissions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Cars_Type_TypeId",
+                        column: x => x.TypeId,
+                        principalTable: "Type",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -131,10 +150,14 @@ namespace CarsAnnouncements.Data.Migrations
                 column: "TransmissionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cars_TypeId",
+                table: "Cars",
+                column: "TypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Models_BrandId",
                 table: "Models",
-                column: "BrandId",
-                unique: true);
+                column: "BrandId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -150,6 +173,9 @@ namespace CarsAnnouncements.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Transmissions");
+
+            migrationBuilder.DropTable(
+                name: "Type");
 
             migrationBuilder.DropTable(
                 name: "Brands");

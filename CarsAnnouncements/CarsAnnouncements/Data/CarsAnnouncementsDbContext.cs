@@ -58,10 +58,10 @@ namespace CarsAnnouncements.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
-                .Entity<Brand>()
-                .HasOne(b => b.Model)
-                .WithOne(m => m.Brand)
-                .HasForeignKey<Model>(m => m.BrandId)
+                .Entity<Model>()
+                .HasOne(m => m.Brand)
+                .WithMany(b => b.Models)
+                .HasForeignKey(m => m.BrandId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);

@@ -25,9 +25,6 @@ namespace CarsAnnouncements.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ModelId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -121,8 +118,7 @@ namespace CarsAnnouncements.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BrandId")
-                        .IsUnique();
+                    b.HasIndex("BrandId");
 
                     b.ToTable("Models");
                 });
@@ -207,8 +203,8 @@ namespace CarsAnnouncements.Data.Migrations
             modelBuilder.Entity("CarsAnnouncements.Data.Models.Model", b =>
                 {
                     b.HasOne("CarsAnnouncements.Data.Models.Brand", "Brand")
-                        .WithOne("Model")
-                        .HasForeignKey("CarsAnnouncements.Data.Models.Model", "BrandId")
+                        .WithMany("Models")
+                        .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -219,7 +215,7 @@ namespace CarsAnnouncements.Data.Migrations
                 {
                     b.Navigation("Cars");
 
-                    b.Navigation("Model");
+                    b.Navigation("Models");
                 });
 
             modelBuilder.Entity("CarsAnnouncements.Data.Models.Fuel", b =>

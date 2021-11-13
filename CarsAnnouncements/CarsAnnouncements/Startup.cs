@@ -20,6 +20,8 @@ namespace CarsAnnouncements
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services
                 .AddDbContext<CarsAnnouncementsDbContext>(options => options
                     .UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
@@ -49,12 +51,18 @@ namespace CarsAnnouncements
             app
                 .UseHttpsRedirection()
                 .UseRouting()
+                .UseCors(options => options
+                    .WithOrigins(this.Configuration.GetValue<string>("FrontendUrl"))
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                )
                 .UseAuthentication()
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
-                    {
-                        endpoints.MapControllers();
-                    });
+                {
+                    endpoints.MapControllers();
+                });
         }
     }
 }
