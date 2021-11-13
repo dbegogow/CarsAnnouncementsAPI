@@ -5,7 +5,7 @@ using static CarsAnnouncements.Data.DataConstants;
 
 namespace CarsAnnouncements.Data.Models
 {
-    public class Brand
+    public class Model
     {
         public int Id { get; init; }
 
@@ -13,9 +13,9 @@ namespace CarsAnnouncements.Data.Models
         [MaxLength(NameMaxLength)]
         public string Name { get; set; }
 
-        public int ModelId { get; set; }
+        public int BrandId { get; set; }
 
-        public Model Model { get; set; }
+        public Brand Brand { get; set; }
 
         public ICollection<Car> Cars { get; init; } = new HashSet<Car>();
     }

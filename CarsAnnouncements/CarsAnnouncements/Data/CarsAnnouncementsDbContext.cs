@@ -14,6 +14,8 @@ namespace CarsAnnouncements.Data
 
         public DbSet<Brand> Brands { get; init; }
 
+        public DbSet<Model> Models { get; init; }
+
         public DbSet<Fuel> Fuels { get; init; }
 
         public DbSet<Transmission> Transmissions { get; init; }
@@ -29,6 +31,13 @@ namespace CarsAnnouncements.Data
 
             builder
                 .Entity<Car>()
+                .HasOne(c => c.Model)
+                .WithMany(m => m.Cars)
+                .HasForeignKey(c => c.ModelId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Car>()
                 .HasOne(c => c.Fuel)
                 .WithMany(f => f.Cars)
                 .HasForeignKey(c => c.FuelId)
@@ -39,6 +48,13 @@ namespace CarsAnnouncements.Data
                 .HasOne(c => c.Transmission)
                 .WithMany(t => t.Cars)
                 .HasForeignKey(c => c.TransmissionId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Brand>()
+                .HasOne(b => b.Model)
+                .WithOne(m => m.Brand)
+                .HasForeignKey<Model>(m => m.BrandId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
