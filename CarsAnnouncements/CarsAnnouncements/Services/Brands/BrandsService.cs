@@ -18,10 +18,10 @@ namespace CarsAnnouncements.Services.Brands
             this._mapper = mapper.ConfigurationProvider;
         }
 
-        public IEnumerable<BrandFilterServiceModel> All()
+        public IEnumerable<BrandServiceModel> All()
             => this._data
                 .Brands
-                .ProjectTo<BrandFilterServiceModel>(this._mapper)
+                .ProjectTo<BrandServiceModel>(this._mapper)
                 .ToList();
     }
 }

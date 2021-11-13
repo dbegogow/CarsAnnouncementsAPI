@@ -5,6 +5,6 @@ namespace CarsAnnouncements.Services.Brands
 {
     public interface IBrandsService
     {
-        IEnumerable<BrandFilterServiceModel> All();
+        IEnumerable<BrandServiceModel> All();
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CarsAnnouncements.Services.Brands.Models
 {
-    public class BrandFilterServiceModel
+    public class BrandServiceModel
     {
         public int Id { get; init; }
 
