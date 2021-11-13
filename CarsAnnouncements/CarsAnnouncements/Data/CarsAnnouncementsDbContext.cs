@@ -38,6 +38,13 @@ namespace CarsAnnouncements.Data
 
             builder
                 .Entity<Car>()
+                .HasOne(c => c.Type)
+                .WithMany(t => t.Cars)
+                .HasForeignKey(c => c.TypeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Car>()
                 .HasOne(c => c.Fuel)
                 .WithMany(f => f.Cars)
                 .HasForeignKey(c => c.FuelId)

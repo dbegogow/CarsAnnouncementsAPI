@@ -12,6 +12,10 @@
 
         public Model Model { get; set; }
 
+        public int TypeId { get; set; }
+
+        public Type Type { get; set; }
+
         public int FuelId { get; set; }
 
         public Fuel Fuel { get; set; }
