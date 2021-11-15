@@ -13,8 +13,8 @@ namespace CarsAnnouncements.Controllers
         public CarsController(ICarsService cars)
             => this._cars = cars;
 
-        [HttpGet]
-        public IActionResult GetAll(CarFilterModel model)
+        [HttpPost]
+        public IActionResult AllCards(CarFilterModel model)
         {
             var cars = this._cars
                 .All(

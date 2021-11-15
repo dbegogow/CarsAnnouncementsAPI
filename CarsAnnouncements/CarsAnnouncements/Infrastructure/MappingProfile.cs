@@ -9,7 +9,7 @@ namespace CarsAnnouncements.Infrastructure
     {
         public MappingProfile()
         {
-            CreateMap<Profile, BrandServiceModel>();
+            CreateMap<Brand, BrandServiceModel>();
 
             CreateMap<Car, CarCardServiceModel>();
         }

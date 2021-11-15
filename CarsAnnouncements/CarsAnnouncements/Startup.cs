@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using CarsAnnouncements.Infrastructure;
 using CarsAnnouncements.Services.Brands;
+using CarsAnnouncements.Services.Cars;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -36,7 +37,8 @@ namespace CarsAnnouncements
             services.AddAutoMapper(typeof(Startup));
 
             services
-                .AddTransient<IBrandsService, BrandsService>();
+                .AddTransient<IBrandsService, BrandsService>()
+                .AddTransient<ICarsService, CarsService>();
 
             services.AddSwaggerGen(c =>
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CarsAnnouncements", Version = "v1" }));

@@ -42,25 +42,25 @@ namespace CarsAnnouncements.Services.Cars
                     .Where(c => c.Brand.Name == brand);
             }
 
-            if (string.IsNullOrWhiteSpace(model))
+            if (!string.IsNullOrWhiteSpace(model))
             {
                 carsQuery = carsQuery
                     .Where(c => c.Model.Name == model);
             }
 
-            if (string.IsNullOrWhiteSpace(type))
+            if (!string.IsNullOrWhiteSpace(type))
             {
                 carsQuery = carsQuery
                     .Where(c => c.Type.Name == type);
             }
 
-            if (string.IsNullOrWhiteSpace(fuel))
+            if (!string.IsNullOrWhiteSpace(fuel))
             {
                 carsQuery = carsQuery
                     .Where(c => c.Fuel.Name == fuel);
             }
 
-            if (string.IsNullOrWhiteSpace(transmission))
+            if (!string.IsNullOrWhiteSpace(transmission))
             {
                 carsQuery = carsQuery
                     .Where(c => c.Transmission.Name == transmission);
