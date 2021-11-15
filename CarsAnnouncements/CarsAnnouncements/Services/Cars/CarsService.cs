@@ -24,13 +24,13 @@ namespace CarsAnnouncements.Services.Cars
             string type = null,
             string fuel = null,
             string transmission = null,
-            int? priceFrom = null,
-            int? priceTo = null,
-            int? yearFrom = null,
-            int? yearTo = null,
+            int? fromPrice = null,
+            int? toPrice = null,
+            int? fromYear = null,
+            int? toYear = null,
             int? doors = null,
-            int? horsepowerFrom = null,
-            int? horsePowerTo = null)
+            int? fromHorsepower = null,
+            int? toHorsepower = null)
         {
             var carsQuery = this._data
                 .Cars
@@ -66,28 +66,28 @@ namespace CarsAnnouncements.Services.Cars
                     .Where(c => c.Transmission.Name == transmission);
             }
 
-            if (priceFrom != null)
+            if (fromPrice != null)
             {
                 carsQuery = carsQuery
-                    .Where(c => c.Price >= priceFrom);
+                    .Where(c => c.Price >= fromPrice);
             }
 
-            if (priceTo != null)
+            if (toPrice != null)
             {
                 carsQuery = carsQuery
-                    .Where(c => c.Price <= priceTo);
+                    .Where(c => c.Price <= toPrice);
             }
 
-            if (yearFrom != null)
+            if (fromYear != null)
             {
                 carsQuery = carsQuery
-                    .Where(c => c.Year >= yearFrom);
+                    .Where(c => c.Year >= fromYear);
             }
 
-            if (yearTo != null)
+            if (toYear != null)
             {
                 carsQuery = carsQuery
-                    .Where(c => c.Year <= yearTo);
+                    .Where(c => c.Year <= toYear);
             }
 
             if (doors != null)
@@ -96,16 +96,16 @@ namespace CarsAnnouncements.Services.Cars
                     .Where(c => c.Doors == doors);
             }
 
-            if (horsepowerFrom != null)
+            if (fromHorsepower != null)
             {
                 carsQuery = carsQuery
-                    .Where(c => c.Horsepower >= horsepowerFrom);
+                    .Where(c => c.Horsepower >= fromHorsepower);
             }
 
-            if (horsePowerTo != null)
+            if (toHorsepower != null)
             {
                 carsQuery = carsQuery
-                    .Where(c => c.Horsepower <= horsePowerTo);
+                    .Where(c => c.Horsepower <= toHorsepower);
             }
 
 

@@ -23,10 +23,13 @@ namespace CarsAnnouncements.Controllers
                     model.Type,
                     model.Fuel,
                     model.Transmission,
-                    model.Price,
-                    model.Year,
+                    model.FromPrice,
+                    model.ToPrice,
+                    model.FromYear,
+                    model.ToYear,
                     model.Doors,
-                    model.Horsepower
+                        model.FromHorsepower,
+                    model.ToHorsepower
                 );
 
             return Ok(cars);

@@ -12,12 +12,18 @@
 
         public string Transmission { get; init; }
 
-        public int? Price { get; init; }
+        public int? FromPrice { get; init; }
 
-        public int? Year { get; init; }
+        public int? ToPrice { get; init; }
+
+        public int? FromYear { get; init; }
+
+        public int? ToYear { get; init; }
 
         public int? Doors { get; init; }
 
-        public int? Horsepower { get; init; }
+        public int? FromHorsepower { get; init; }
+
+        public int? ToHorsepower { get; init; }
     }
 }

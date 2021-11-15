@@ -11,13 +11,13 @@ namespace CarsAnnouncements.Services.Cars
             string type = null,
             string fuel = null,
             string transmission = null,
-            int? priceFrom = null,
-            int? priceTo = null,
-            int? yearFrom = null,
-            int? yearTo = null,
+            int? fromPrice = null,
+            int? toPrice = null,
+            int? fromYear = null,
+            int? toYear = null,
             int? doors = null,
-            int? horsepowerFrom = null,
-            int? horsepowerTo = null
-        );
+            int? fromHorsepower = null,
+            int? toHorsepower = null
+            );
     }
 }
