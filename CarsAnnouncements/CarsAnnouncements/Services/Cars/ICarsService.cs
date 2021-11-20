@@ -15,7 +15,7 @@ namespace CarsAnnouncements.Services.Cars
             int? toPrice = null,
             int? fromYear = null,
             int? toYear = null,
-            int? doors = null,
+            string doors = null,
             int? fromHorsepower = null,
             int? toHorsepower = null
             );

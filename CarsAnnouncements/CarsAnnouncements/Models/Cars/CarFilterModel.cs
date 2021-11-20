@@ -20,7 +20,7 @@
 
         public int? ToYear { get; init; }
 
-        public int? Doors { get; init; }
+        public string Doors { get; init; }
 
         public int? FromHorsepower { get; init; }
 

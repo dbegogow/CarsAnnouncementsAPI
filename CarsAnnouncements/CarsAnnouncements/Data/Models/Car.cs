@@ -1,4 +1,7 @@
-﻿namespace CarsAnnouncements.Data.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace CarsAnnouncements.Data.Models
 {
     public class Car
     {
@@ -28,8 +31,26 @@
 
         public int Year { get; set; }
 
-        public int Doors { get; set; }
+        [Required]
+        public string Doors { get; set; }
 
         public int Horsepower { get; set; }
+
+        public int Kilometers { get; set; }
+
+        public int Cubes { get; set; }
+
+        public string Description { get; set; }
+
+        public string Extras { get; set; }
+
+        public int Views { get; set; }
+
+        public DateTime Date { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
+
+        public User User { get; set; }
     }
 }

@@ -58,11 +58,33 @@ namespace CarsAnnouncements.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
+                .Entity<Car>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Cars)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
                 .Entity<Model>()
                 .HasOne(m => m.Brand)
                 .WithMany(b => b.Models)
                 .HasForeignKey(m => m.BrandId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<User>()
+                .HasOne(u => u.Company)
+                .WithOne(c => c.User)
+                .HasForeignKey<Company>(c => c.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Company>()
+                .HasOne(c => c.City)
+                .WithMany(c => c.Companies)
+                .HasForeignKey(c => c.CityId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             base.OnModelCreating(builder);
         }

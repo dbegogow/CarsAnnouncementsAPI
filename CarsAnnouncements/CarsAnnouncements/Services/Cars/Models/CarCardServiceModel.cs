@@ -18,7 +18,7 @@
 
         public int Year { get; init; }
 
-        public int Doors { get; init; }
+        public string Doors { get; init; }
 
         public int Horsepower { get; init; }
     }

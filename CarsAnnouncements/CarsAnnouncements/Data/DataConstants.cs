@@ -2,6 +2,8 @@
 {
     public class DataConstants
     {
+        public const int IdMaxLength = 40;
+
         public const int NameMinLength = 3;
         public const int NameMaxLength = 30;
 

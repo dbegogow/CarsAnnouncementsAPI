@@ -28,7 +28,7 @@ namespace CarsAnnouncements.Services.Cars
             int? toPrice = null,
             int? fromYear = null,
             int? toYear = null,
-            int? doors = null,
+            string doors = null,
             int? fromHorsepower = null,
             int? toHorsepower = null)
         {
@@ -90,7 +90,7 @@ namespace CarsAnnouncements.Services.Cars
                     .Where(c => c.Year <= toYear);
             }
 
-            if (doors != null)
+            if (string.IsNullOrWhiteSpace(doors))
             {
                 carsQuery = carsQuery
                     .Where(c => c.Doors == doors);
