@@ -25,8 +25,8 @@ namespace CarsAnnouncements.Data.Models
         public string Image { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public string DealerId { get; set; }
 
-        public User User { get; set; }
+        public Dealer Dealer { get; set; }
     }
 }

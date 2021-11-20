@@ -59,9 +59,9 @@ namespace CarsAnnouncements.Data
 
             builder
                 .Entity<Car>()
-                .HasOne(c => c.User)
-                .WithMany(u => u.Cars)
-                .HasForeignKey(c => c.UserId)
+                .HasOne(c => c.Dealer)
+                .WithMany(d => d.Cars)
+                .HasForeignKey(c => c.DealerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
@@ -72,10 +72,10 @@ namespace CarsAnnouncements.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
-                .Entity<User>()
-                .HasOne(u => u.Company)
-                .WithOne(c => c.User)
-                .HasForeignKey<Company>(c => c.UserId)
+                .Entity<Dealer>()
+                .HasOne(d => d.Company)
+                .WithOne(c => c.Dealer)
+                .HasForeignKey<Company>(c => c.DealerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
