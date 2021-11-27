@@ -90,7 +90,7 @@ namespace CarsAnnouncements.Services.Cars
                     .Where(c => c.Year <= toYear);
             }
 
-            if (string.IsNullOrWhiteSpace(doors))
+            if (!string.IsNullOrWhiteSpace(doors))
             {
                 carsQuery = carsQuery
                     .Where(c => c.Doors == doors);
